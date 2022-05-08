@@ -69,8 +69,8 @@ export const App = () => {
                             }
                         />
                         <Route path='post/:itemID' element={<Item setPostList={setPostList}/>} />
-                        <Route path='post/:itemID/edit' element={<EditItem />} />
-                        <Route path='post/create' element={<CreateItem setPostList={setPostList} />} />
+                        <Route path='post/:itemID/edit' element={<EditItem setPostList={setPostList} />} />
+                        <Route path='post/create' element={<CreateItem />} />
                         <Route path='user/edit' element={<EditUser />} />
                     </Routes>
                 </div>

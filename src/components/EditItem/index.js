@@ -4,16 +4,17 @@ import { Grid, TextField, Button, Typography } from '@mui/material';
 import api from '../../utils/api';
 import { useNavigate, useParams } from 'react-router-dom';
 
-export const EditItem = () => {
+export const EditItem = ({ setPostList }) => {
     const params = useParams();
     const navigate = useNavigate();
 
     const [title, setТitle] = useState('');
     const [text, setText] = useState('');
     const [image, setImage] = useState('');
-    const [tags, setTags] = useState('');
+    const [rawTags, setRawTags] = useState('');
 
     const handleClick = () => {
+        let tags = rawTags.split(',');
         api.editPost(params.itemID, {
             image,
             tags,
@@ -22,6 +23,7 @@ export const EditItem = () => {
         })
             .then((data) => {
                 navigate('/');
+                console.log(data);
             })
             .catch((err) => alert(err));
     };
@@ -56,9 +58,9 @@ export const EditItem = () => {
                     fullWidth
                     label='Тэги через запятую'
                     variant='outlined'
-                    value={tags}
+                    value={rawTags}
                     onChange={({ target }) => {
-                        setTags(target.value.split(','));
+                        setRawTags(target.value);
                     }}
                 />
             </Grid>
