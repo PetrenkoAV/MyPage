@@ -23,7 +23,6 @@ export const EditItem = ({ setPostList }) => {
         })
             .then((data) => {
                 navigate('/');
-                console.log(data);
             })
             .catch((err) => alert(err));
     };
